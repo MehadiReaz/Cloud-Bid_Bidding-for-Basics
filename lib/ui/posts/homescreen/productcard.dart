@@ -24,36 +24,42 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Image.network(
-              productPhotoUrl,
-              fit: BoxFit.cover, // Set the fit property to cover.
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsScreen(
+              productName: productName,
+              productDescription: productDescription,
+              productPhoto: productPhotoUrl,
+              minimumBidPrice: minimumBidPrice,
+              auctionEndDateTime: auctionEndDateTime,
+              prodId: productId,
             ),
           ),
-          ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProductDetailsScreen(
-                    productName: productName,
-                    productDescription: productDescription,
-                    productPhoto: productPhotoUrl,
-                    minimumBidPrice: minimumBidPrice,
-                    auctionEndDateTime: auctionEndDateTime,
-                    prodId: productId,
-                  ),
+        );
+      },
+      child: Card(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+                child: Image.network(
+                  productPhotoUrl,
+                  fit: BoxFit.cover, // Set the fit property to cover.
                 ),
-              );
-            },
-            title: Text(productName),
-            subtitle: Text('Minimum Bid: $minimumBidPrice\$'),
-          ),
-        ],
+              ),
+            ),
+            ListTile(
+              title: Text(productName),
+              subtitle: Text('Minimum Bid: $minimumBidPrice\$'),
+            ),
+          ],
+        ),
       ),
     );
   }

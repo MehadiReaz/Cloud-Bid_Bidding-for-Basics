@@ -90,7 +90,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       final productPhoto = product['productPhoto'];
                       final auctionEndDateTime = product['auctionEndDateTime'];
                       final prodId = product['productId'];
-                      final userId = product['userId'];
 
                       return ListTile(
                         title: Text(productName),
