@@ -6,7 +6,10 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ProfilePageState createState() => _ProfilePageState();
 }
 
@@ -24,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String? _address;
 
   // Controller for handling the password change
-  TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
 
   // Function to update the user's password
   void _updatePassword() async {
@@ -122,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Page'),
+        title: const Text('Profile Page'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -150,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     right: 0,
                     child: FloatingActionButton(
                       onPressed: _pickProfilePicture,
-                      child: Icon(Icons.camera_alt),
+                      child: const Icon(Icons.camera_alt),
                     ),
                   ),
                 ],
@@ -185,7 +188,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   : TextField(
                       onChanged: (value) => _phoneNumber = value,
                       keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Phone',
                       ),
                     ),
@@ -200,13 +203,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           _gender = value;
                         });
                       },
-                      items: [
+                      items: const [
                         DropdownMenuItem(value: 'Male', child: Text('Male')),
                         DropdownMenuItem(
                             value: 'Female', child: Text('Female')),
                         DropdownMenuItem(value: 'Other', child: Text('Other')),
                       ],
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Gender',
                       ),
                     ),
@@ -218,7 +221,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Text('DOB: ${_dob!.day}-${_dob!.month}-${_dob!.year}'),
                         IconButton(
                           onPressed: _pickDate,
-                          icon: Icon(Icons.calendar_today),
+                          icon: const Icon(Icons.calendar_today),
                         ),
                       ],
                     )
@@ -233,7 +236,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ? Text('Address: $_address')
                   : TextField(
                       onChanged: (value) => _address = value,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Address',
                       ),
                     ),
@@ -251,7 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _updateUserData();
                 _updatePassword();
               },
-              child: Text('Save Changes'),
+              child: const Text('Save Changes'),
             ),
           ],
         ),

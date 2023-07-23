@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/ui/auth/login_screen.dart';
-import 'package:ecommerce_app/ui/posts/add_product.dart';
 import 'package:ecommerce_app/ui/posts/homescreen/productgrid.dart';
 import 'package:ecommerce_app/ui/posts/searchscreen/search.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -123,6 +122,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         MaterialPageRoute(
                             builder: (context) => const LoginScreen()));
                   }
+
                   break;
               }
             },
@@ -141,13 +141,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
             )
           : ProductGrid(
               productsList: productGallary), // Use the ProductGrid widget.
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ProductForm()));
-        },
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }

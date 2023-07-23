@@ -9,6 +9,7 @@ class ProductCard extends StatelessWidget {
   final String userId;
   final int minimumBidPrice;
   final String auctionEndDateTime;
+  final String productId;
 
   const ProductCard({
     super.key,
@@ -18,6 +19,7 @@ class ProductCard extends StatelessWidget {
     required this.userId,
     required this.minimumBidPrice,
     required this.auctionEndDateTime,
+    required this.productId,
   });
 
   @override
@@ -43,6 +45,7 @@ class ProductCard extends StatelessWidget {
                     productPhoto: productPhotoUrl,
                     minimumBidPrice: minimumBidPrice,
                     auctionEndDateTime: auctionEndDateTime,
+                    prodId: productId,
                   ),
                 ),
               );

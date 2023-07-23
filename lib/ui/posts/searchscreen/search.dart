@@ -89,6 +89,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       final productDescription = product['productDescription'];
                       final productPhoto = product['productPhoto'];
                       final auctionEndDateTime = product['auctionEndDateTime'];
+                      final prodId = product['productId'];
+                      final userId = product['userId'];
 
                       return ListTile(
                         title: Text(productName),
@@ -106,6 +108,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 productPhoto: productPhoto,
                                 minimumBidPrice: minimumBidPrice,
                                 auctionEndDateTime: auctionEndDateTime,
+                                prodId: prodId,
                               ),
                             ),
                           );

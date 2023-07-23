@@ -1,9 +1,11 @@
+import 'package:ecommerce_app/widgets/round_button.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:intl/intl.dart';
 
 class ProductForm extends StatefulWidget {
   const ProductForm({super.key});
@@ -22,15 +24,18 @@ class _ProductFormState extends State<ProductForm> {
   String _productDescription = '';
   File? _productPhoto;
   double _minimumBidPrice = 0.0;
+  String _selectedPhotoName = '';
   final DateTime _porductCreatedDateTime = DateTime.now();
-  Future<void> _selectProductPhoto() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    setState(() {
-      if (pickedFile != null) {
-        _productPhoto = File(pickedFile.path);
-      }
-    });
+  void _resetForm() {
+    void _resetForm() {
+      _formKey.currentState?.reset();
+      _productName = '';
+      _productDescription = '';
+      _productPhoto = null;
+      _minimumBidPrice = 0.0;
+      _selectedPhotoName = ''; // Clear the selected photo name
+      _auctionEndDateTime = DateTime.now();
+    }
   }
 
   Future<void> _submitForm() async {
@@ -61,6 +66,7 @@ class _ProductFormState extends State<ProductForm> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Product added successfully')),
           );
+          _resetForm();
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -77,14 +83,40 @@ class _ProductFormState extends State<ProductForm> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime(
-          DateTime.now().year + 10), // Set a limit to 10 years in the future
+        DateTime.now().year + 10,
+      ), // Set a limit to 10 years in the future
     );
 
     if (selectedDate != null) {
-      setState(() {
-        _auctionEndDateTime = selectedDate;
-      });
+      // ignore: use_build_context_synchronously
+      TimeOfDay? selectedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(_auctionEndDateTime),
+      );
+
+      if (selectedTime != null) {
+        setState(() {
+          _auctionEndDateTime = DateTime(
+            selectedDate.year,
+            selectedDate.month,
+            selectedDate.day,
+            selectedTime.hour,
+            selectedTime.minute,
+          );
+        });
+      }
     }
+  }
+
+  Future<void> _selectProductPhoto() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _productPhoto = File(pickedFile.path);
+        _selectedPhotoName = pickedFile.name; // Update the selected photo name
+      }
+    });
   }
 
   Future<String> _uploadProductPhoto(String userId, File productPhoto) async {
@@ -107,6 +139,7 @@ class _ProductFormState extends State<ProductForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Add Product'),
       ),
       body: Padding(
@@ -125,6 +158,7 @@ class _ProductFormState extends State<ProductForm> {
                 },
                 onSaved: (value) => _productName = value!,
               ),
+              const SizedBox(height: 16),
               TextFormField(
                 decoration:
                     const InputDecoration(labelText: 'Product Description'),
@@ -136,6 +170,7 @@ class _ProductFormState extends State<ProductForm> {
                 },
                 onSaved: (value) => _productDescription = value!,
               ),
+              const SizedBox(height: 16),
               TextFormField(
                 decoration:
                     const InputDecoration(labelText: 'Minimum Bid Price'),
@@ -151,27 +186,45 @@ class _ProductFormState extends State<ProductForm> {
                 },
                 onSaved: (value) => _minimumBidPrice = double.parse(value!),
               ),
-              Text(
-                'Auction End Date: ${_auctionEndDateTime.toString()}',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(height: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Auction End',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Date: ${DateFormat('MM-dd-yyyy').format(_auctionEndDateTime)}',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  Text(
+                    'Time: ${DateFormat('hh:mm a').format(_auctionEndDateTime)}',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 16),
+                ],
               ),
+
+              const SizedBox(height: 16),
 
               // Button to select Auction End Date
               ElevatedButton(
                 onPressed: _selectAuctionEndDateTime,
-                child: const Text('Select Auction End Date'),
+                child: const Text('Select Auction End Time'),
               ),
+              const SizedBox(height: 16),
+
               ElevatedButton(
                 onPressed: _selectProductPhoto,
-                child: const Text('Select Product Photo'),
+                child: _selectedPhotoName.isNotEmpty
+                    ? Text('Selected Photo: $_selectedPhotoName')
+                    : const Text('Select Product Photo'),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Text('Submit'),
-                ),
-              ),
+              const SizedBox(height: 24),
+
+              RoundButton(onTap: _submitForm, title: 'Submit'),
             ],
           ),
         ),

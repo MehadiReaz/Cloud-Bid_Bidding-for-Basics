@@ -6,7 +6,7 @@ import 'package:ecommerce_app/utils/utils.dart';
 
 import '../../firebase_services/google_auth.dart';
 import '../../widgets/round_button.dart';
-import '../posts/homescreen/products.dart';
+import '../posts/homescreen/bottomnav/bottomnavbar.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -40,7 +40,7 @@ class _SignupScreenState extends State<SignupScreen> {
               password: passwordController.text.toString())
           .then((value) {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ProductListScreen()));
+            MaterialPageRoute(builder: (context) => const BottomNavBar()));
         setState(() {
           isLoading = false;
         });

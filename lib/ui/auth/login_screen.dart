@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../posts/homescreen/bottomnav/bottomnavbar.dart';
 import '../posts/homescreen/products.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             password: passwordController.text.toString())
         .then((value) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const ProductListScreen()));
+          MaterialPageRoute(builder: (context) => const BottomNavBar()));
     }).onError((error, stackTrace) {
       Utils().toastMessgae(error.toString());
     });
@@ -47,11 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final credential = GoogleAuthProvider.credential(
         accessToken: gAuth.accessToken, idToken: gAuth.idToken);
     return await FirebaseAuth.instance.signInWithCredential(credential).then(
-        (value) => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const ProductListScreen())).onError(
-            (error, stackTrace) => Utils().toastMessgae(error.toString())));
+        (value) => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const BottomNavBar()))
+            .onError(
+                (error, stackTrace) => Utils().toastMessgae(error.toString())));
   }
 
   @override

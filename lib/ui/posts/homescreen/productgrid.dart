@@ -20,6 +20,7 @@ class ProductGrid extends StatelessWidget {
 
         return ProductCard(
           userId: product['userId'],
+          productId: product['productId'],
           productName: product['productName'],
           minimumBidPrice: product['minimumBidPrice'.toString()],
           productPhotoUrl: product['productPhoto'],

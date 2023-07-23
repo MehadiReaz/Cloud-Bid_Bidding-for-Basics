@@ -84,8 +84,7 @@ class _MyPostedItemsState extends State<MyPostedItems> {
           ? const Center(
               child: Text('No products found.'),
             )
-          : ProductGrid(
-              productsList: _mYproductsList), // Use the ProductGrid widget.
+          : ProductGrid(productsList: _mYproductsList),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
