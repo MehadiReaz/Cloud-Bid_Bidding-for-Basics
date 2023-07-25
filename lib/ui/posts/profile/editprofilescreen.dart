@@ -256,17 +256,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       label: const Text('Pick Date'),
                     ),
             ),
-            ListTile(
-              title: _isEditing
-                  ? TextField(
-                      onChanged: (value) => _lName = value,
-                      decoration: InputDecoration(
-                        labelText: 'Last Name',
-                      ),
-                      controller: TextEditingController(text: _lName),
-                    )
-                  : Text('Last Name: $_lName'),
-            ),
             const SizedBox(height: 20),
             if (_isEditing)
               TextField(

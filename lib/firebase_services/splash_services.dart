@@ -3,7 +3,7 @@ import 'package:ecommerce_app/ui/auth/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/posts/homescreen/products.dart';
+import '../ui/posts/homescreen/bottomnav/bottomnavbar.dart';
 
 class SplashServices {
   void isLogin(BuildContext context) {
@@ -16,7 +16,7 @@ class SplashServices {
         () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ProductListScreen(),
+            builder: (context) => BottomNavBar(),
           ),
         ),
       );
