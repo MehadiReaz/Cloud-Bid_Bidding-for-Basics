@@ -1,6 +1,6 @@
 Introducing My innovative Flutter app that seamlessly combines convenience and automation to enhance your online shopping experience. With our app, you'll have access to a range of powerful features designed to make your journey smooth and efficient.
 
-#Effortless Access: Say goodbye to complex sign-up processes. Our app offers hassle-free login options, allowing you to swiftly access your account via Google or email. Whether you're a new user or returning customer, getting started has never been easier.
+# Effortless Access: Say goodbye to complex sign-up processes. Our app offers hassle-free login options, allowing you to swiftly access your account via Google or email. Whether you're a new user or returning customer, getting started has never been easier.
 
 #Seamless Data Storage: Your information matters, and that's why we prioritize secure storage. We utilize Firebase Firestore to safeguard your user data, ensuring your personal details are always protected and readily available whenever you need them.
 
