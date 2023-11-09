@@ -1,4 +1,4 @@
-### E-BetShop
+# E-BetShop
 
 ## Elevate Your Online Shopping Experience 🛍️
 Say goodbye to complex sign-up processes. Our app offers hassle-free login options, allowing swift access via Google or email, ensuring a smooth start for both new and returning users.
@@ -79,22 +79,22 @@ Say goodbye to complex sign-up processes. Our app offers hassle-free login optio
 
 ## Features
 
-# Effortless Access
+### Effortless Access
 Say goodbye to complex sign-up processes. Our app offers hassle-free login options, allowing swift access via Google or email, ensuring a smooth start for both new and returning users.
 
-# Seamless Data Storage
+### Seamless Data Storage
 Prioritize security with Firebase Firestore, safeguarding user data. Your personal details are securely stored, and always ready when you need them.
 
-# Real-Time Product Updates
+### Real-Time Product Updates
 Stay in the loop with real-time updates powered by Firebase Realtime Database. Get the latest on arrivals, pricing, and availability without missing a beat.
 
-# Automated Bidding
+### Automated Bidding
 Efficiently bid on products with our automated system. Sit back, relax, and let the app manage your bids, ensuring you never miss an opportunity.
 
-# Stay Current
+### Stay Current
 Experience automatic product updates. No more manual refreshes—our intelligent system ensures you're always viewing the most current product information.
 
-# Personalized Profiles
+### Personalized Profiles
 Tailor your experience with a personalized profile. Easily edit and manage your information to reflect who you are.
 
 ## Screenshots
