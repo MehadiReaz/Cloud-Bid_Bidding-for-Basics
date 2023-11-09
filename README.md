@@ -1,4 +1,5 @@
 ### E-BetShop
+
 ## Elevate Your Online Shopping Experience 🛍️
 Say goodbye to complex sign-up processes. Our app offers hassle-free login options, allowing swift access via Google or email, ensuring a smooth start for both new and returning users.
 
