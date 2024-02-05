@@ -76,7 +76,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('eCommerce'),
+        title: const Text('Cloud Bid'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

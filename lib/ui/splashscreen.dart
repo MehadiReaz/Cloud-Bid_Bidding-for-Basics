@@ -20,10 +20,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Image.network(
-            'https://www.tbsnews.net/sites/default/files/styles/big_2/public/images/2022/11/12/binimoy.jpeg'),
-      ),
-    );
+        body: Center(child: Image.asset('asset/icons/appLogo.png')));
   }
 }
