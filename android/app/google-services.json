@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "839960797019",
+    "firebase_url": "https://ecommerce-b442e-default-rtdb.firebaseio.com",
     "project_id": "ecommerce-b442e",
     "storage_bucket": "ecommerce-b442e.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "839960797019-q8ifvh4sg2ev81clndedepv8apldm3su.apps.googleusercontent.com",
+          "client_id": "839960797019-o62prc4l1l91j0q8ruvmmu3pcgr4aq83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecommerce_app",
+            "certificate_hash": "e678da2cfd90ccecbde05f7d2db64564a7ce88b6"
+          }
+        },
+        {
+          "client_id": "839960797019-q3vj6othn1a7vtbpef52pief2n54qvmg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "839960797019-q8ifvh4sg2ev81clndedepv8apldm3su.apps.googleusercontent.com",
+              "client_id": "839960797019-6ahrtt8ea8nmolgj9q1hpn1oglkfipsk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
